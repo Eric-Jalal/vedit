@@ -151,20 +151,20 @@ handle_file() {
     *)
       echo "Found: $file"
       echo "What would you like to do?"
-      echo "1) Edit"
-      echo "2) Remove"
-      echo "3) Copy path to clipboard"
+      echo "e) Edit"
+      echo "r) Remove"
+      echo "c) Copy path to clipboard"
       echo -n "Choose an option (1/2/3) or 'n' to exit: "
       read -r action
       case "$action" in
-        1)
+        e)
           $EDITOR "$file"
           ;;
-        2)
+        d)
           rm "$file"
           echo "File removed."
           ;;
-        3)
+        c)
           echo -n "$file" | xclip -selection clipboard
           echo "Path copied to clipboard."
           ;;
