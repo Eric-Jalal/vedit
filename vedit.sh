@@ -3,6 +3,59 @@
 CONFIG_FILE="$HOME/.vedit_config"
 VERSION="1.0.0"
 
+# Loading animation
+spin() {
+    local -a spinner
+    spinner=('-' '\' '|' '/')
+    while :
+    do
+        for i in "${spinner[@]}"
+        do
+            echo -ne "\r$i"
+            sleep 0.2
+        done
+    done
+}
+
+# Function to display files and let the user select one
+select_file() {
+    local files=("$@")
+    echo "Multiple files found with the provided name:"
+    local i=1
+    for f in "${files[@]}"
+    do
+        echo "$i) $f"
+        let i++
+    done
+    echo -n "Select a file by number to edit: "
+    read choice
+    echo "${files[$choice]}"
+}
+
+# Check if the user wants to configure the editor
+if [[ "$1" == "config" ]]; then
+    echo -n "Which editor would you like to use? (nvim, vim, etc.): "
+    read editor_choice
+    echo "$editor_choice" > "$CONFIG_FILE"
+    exit 0
+fi
+
+# Get the editor from the configuration file or default to nvim
+EDITOR="$(cat "$CONFIG_FILE" 2>/dev/null || echo "nvim")"
+
+# Start the spinner in the background
+spin &
+# Save spinner's process ID
+SPIN_PID=$!
+# Use a trap to stop the spinner when the script exits
+trap "kill -9 $SPIN_PID" $(echo {1..15})
+
+# Search for the file in the current directory and its subdirectories
+files=($(find . -type f -name "*$1*" 2>/dev/null))
+
+# Stop the spinner
+kill -9 $SPIN_PID
+
 # Function to display files and let the user select one
 select_file() {
   local files=("$@")
