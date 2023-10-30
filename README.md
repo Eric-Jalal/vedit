@@ -1,6 +1,6 @@
 # vedit
 
-`vedit` is a command-line utility designed to search for files based on a provided keyword. Once found, it allows the user to either edit the file, delete it, or copy its path to the clipboard. The script also offers an animated loading indication (-|/) while it searches for the files.
+`vedit` is a command-line utility designed to search for files based on a provided keyword. Once found, it allows the user to either edit the file, delete it, or copy its path to the clipboard.
 
 ## Installation
 
