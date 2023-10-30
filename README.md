@@ -4,22 +4,12 @@
 
 ## Installation
 
-Ensure you have the script saved as vedit on your machine.
-
-Make the script executable:
 ```shell
-chmod +x /path/to/vedit
-```
-
-Move or symlink the script to a directory in your PATH for system-wide access:
-```shell
-mv /path/to/vedit /usr/local/bin/
-```
-
-OR
-
-```shell
-ln -s /path/to/vedit /usr/local/bin/vedit
+curl -LO https://github.com/Eric-Jalal/vedit/releases/download/v1.0.0/vedit.tar.gz && \
+tar -xzf vedit.tar.gz && \
+sudo mv vedit.sh /usr/local/bin/vedit.sh && \
+sudo chmod +x /usr/local/bin/vedit.sh && \
+sudo ln -sf /usr/local/bin/vedit.sh /usr/local/bin/vedit
 ```
 
 Optionally, ensure xclip is installed if you want to use the copy-to-clipboard feature:
