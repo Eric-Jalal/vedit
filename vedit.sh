@@ -50,8 +50,8 @@ SPIN_PID=$!
 # Use a trap to stop the spinner when the script exits
 trap "kill -9 $SPIN_PID" $(echo {1..15})
 
-# Search for the file in the current directory and its subdirectories
-files=($(find . -type f -name "*$1*" 2>/dev/null))
+# Use fd to search for files with the provided keyword
+mapfile -t files < <(fd --type f ".*$1.*" .)
 
 # Stop the spinner
 kill -9 $SPIN_PID
@@ -131,8 +131,9 @@ if [[ -z "$1" ]]; then
   exit 1
 fi
 
-# Search for files containing the keyword in the current directory and its subdirectories
-files=($(find . -type f -name "*$1*" 2>/dev/null))
+# Use fd to search for files with the provided keyword
+mapfile -t files < <(fd --type f ".*$1.*" .)
+
 
 handle_file() {
   local file="$1"
