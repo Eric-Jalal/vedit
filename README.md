@@ -3,6 +3,7 @@
 `vedit` is a command-line utility designed to search for files based on a provided keyword. Once found, it allows the user to either edit the file, delete it, or copy its path to the clipboard.
 
 ## Installation
+### Manual
 
 ```shell
 curl -LO https://github.com/Eric-Jalal/vedit/releases/download/v1.0.0/vedit.tar.gz && \
@@ -12,8 +13,15 @@ sudo chmod +x /usr/local/bin/vedit.sh && \
 sudo ln -sf /usr/local/bin/vedit.sh /usr/local/bin/vedit
 ```
 
+### Homebrew
+```shell
+brew tap Eric-Jalal/tap
+brew install vedit
+```
+
 Optionally, ensure xclip is installed if you want to use the copy-to-clipboard feature:
 sudo apt install xclip
+
 
 ## Usage
 
