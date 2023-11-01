@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Set unofficial bash script mode
+set -euo pipefail
+
 CONFIG_FILE="$HOME/.vedit_config"
 VERSION="1.0.0"
 
