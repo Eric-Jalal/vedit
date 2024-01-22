@@ -55,4 +55,6 @@ Loading Animation: While searching, a spinning animation (-|/) is displayed to i
 
 ## Dependencies
 
+fd: Required for searching through files
+mapfile: For transforming the texts into arrays from files
 xclip: Required for the copy-to-clipboard feature. Ensure it's installed on your system.
